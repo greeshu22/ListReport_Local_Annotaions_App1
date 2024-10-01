@@ -42,7 +42,18 @@
                 <Record Type="UI.DataField"  >
                 <PropertyValue Property="Value" Path="Email"/>
                 </Record >
-             
+             <Record Type="UI.DataFieldForAction">
+                 <PropertyValue Property="Action" String="ZB68FE_EMP_SRV.ZB68FE_EMP_SRV_Entities/MakePerminant"/>
+                 <PropertyValue Property="Label" String="{@i18n>makePerminant}"/>
+                 <PropertyValue Property="Determining" Bool="true"/>
+                 <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/>
+             </Record>
+             <Record Type="UI.DataFieldForAction">
+                 <PropertyValue Property="Action" String="ZB68FE_EMP_SRV.ZB68FE_EMP_SRV_Entities/ContinueProbation"/>
+                 <PropertyValue Property="Label" String="{@i18n>continueProbation}"/>
+                 <PropertyValue Property="Determining" Bool="true"/>
+                 <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Negative"/>
+             </Record>
             </Collection>
         </Annotation>
         <Annotation Term="UI.DataPoint" Qualifier="dpRating">
@@ -138,6 +149,22 @@
                 <PropertyValue Property="Value" Path="Salary"/>
                 <PropertyValue Property="Title" String="{@i18n>salary}"/>
             </Record>
+        </Annotation>
+        <Annotation Term="UI.Identification" >
+            <Collection>
+                <Record Type="UI.DataFieldForAction">
+                    <PropertyValue Property="Action" String="ZB68FE_EMP_SRV.ZB68FE_EMP_SRV_Entities/MakePerminant"/>
+                    <PropertyValue Property="Label" String="{@i18n>makePerminant}"/>
+                    <PropertyValue Property="Determining" Bool="true"/>
+                    <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/>
+                </Record>
+                <Record Type="UI.DataFieldForAction">
+                    <PropertyValue Property="Action" String="ZB68FE_EMP_SRV.ZB68FE_EMP_SRV_Entities/ContinueProbation"/>
+                      <PropertyValue Property="Label" String="{@i18n>continueProbation}"/>
+                 <PropertyValue Property="Determining" Bool="true"/>
+                 <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Negative"/>
+                </Record>
+            </Collection>
         </Annotation>
         <Annotation Term="UI.DataPoint" Qualifier="dpStatus">
             <Record Type="UI.DataPointType">
@@ -325,6 +352,7 @@
 <Annotations Target="ZB68FE_EMP_SRV.Employee/Status">
     <Annotation Term="Common.Label" String="{@i18n>status}"/>
 </Annotations>
+
 <Annotations Target="ZB68FE_EMP_SRV.Project">
 <Annotation Term="UI.LineItem" Qualifier="LiProjects" >
     <Collection>
