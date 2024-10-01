@@ -273,7 +273,7 @@
                     </PropertyValue>
                 </Record>
             </Annotation>
-         
+         <!-- To set Static filter -->
             <!-- <Annotation Term="Common.FilterDefaultValue" String="MANAGER"/> -->
         </Annotations>
 <Annotations Target="ZB68FE_EMP_SRV.Employee/Name">

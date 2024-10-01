@@ -49,14 +49,15 @@ sap.ui.define([
                 }
             }
         },
-        onAfterRendering:function(){
-            var oSmartFilterBar1 = this.byId("listReportFilter");
-            var oDesigFilter = oSmartFilterBar1.getAllFilterItems()[2].getControl();
-            oDesigFilter.setTokens([new sap.m.Token({
-                key:"MANAGER",
-                text:"=MANAGER"
-            })]);
-        },
+        // To set dynamic filter
+        // onAfterRendering:function(){
+        //     var oSmartFilterBar1 = this.byId("listReportFilter");
+        //     var oDesigFilter = oSmartFilterBar1.getAllFilterItems()[2].getControl();
+        //     oDesigFilter.setTokens([new sap.m.Token({
+        //         key:"MANAGER",
+        //         text:"=MANAGER"
+        //     })]);
+        // },
         SendNoticetoEmployees: function(oEvent) {
         var extensionAPI = this.extensionAPI;
         var aSelectedRows = extensionAPI.getSelectedContexts();
