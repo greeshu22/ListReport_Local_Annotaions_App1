@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZB68FE_EMP_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Employee" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empid"/>
+                </Key>
+                <Property Name="Doj" Type="Edm.DateTime" Nullable="false" Precision="7" sap:display-format="Date" sap:filter-restriction="interval" sap:unicode="false" sap:label="DOJ"/>
+                <Property Name="Imageurl" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="IMAGEURL"/>
+                <Property Name="Empid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPID" sap:updatable="false"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="NAME"/>
+                <Property Name="Desig" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="DESIG"/>
+                <Property Name="Skill" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="SKILL"/>
+                <Property Name="Email" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="EMAIL"/>
+                <Property Name="Salary" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="2" sap:unicode="false" sap:unit="Currencycode" sap:label="SALARY"/>
+                <Property Name="Currencycode" Type="Edm.String" Nullable="false" MaxLength="3" sap:unicode="false" sap:label="CURRENCYCODE" sap:semantics="currency-code"/>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="STATUS"/>
+                <Property Name="Statuscriticality" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="STATUSCRITICALITY"/>
+                <Property Name="Rating" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="RATING"/>
+                <NavigationProperty Name="toProjects" Relationship="ZB68FE_EMP_SRV.EmployeesToProjects" FromRole="FromRole_EmployeesToProjects" ToRole="ToRole_EmployeesToProjects"/>
+                <NavigationProperty Name="toResumes" Relationship="ZB68FE_EMP_SRV.EmployeesToResumes" FromRole="FromRole_EmployeesToResumes" ToRole="ToRole_EmployeesToResumes"/>
+            </EntityType>
+            <EntityType Name="Project" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empid"/>
+                    <PropertyRef Name="Prjcode"/>
+                </Key>
+                <Property Name="Empid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPID" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Teamsize" Type="Edm.Byte" Nullable="false" sap:unicode="false" sap:label="TEAMSIZE" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjcode" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="PRJCODE" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Clientname" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="CLIENTNAME" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjname" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="PRJNAME" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Prjdesc" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="PRJDESC" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Photo" m:HasStream="true" sap:is-thing-type="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empid"/>
+                </Key>
+                <Property Name="Empid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILENAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILETYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filecontent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Binary String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="Resume" m:HasStream="true" sap:is-thing-type="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Empid"/>
+                    <PropertyRef Name="Filename"/>
+                </Key>
+                <Property Name="Empid" Type="Edm.String" Nullable="false" MaxLength="6" sap:unicode="false" sap:label="EMPID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILENAME" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filetype" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="FILETYPE" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Filecontent" Type="Edm.Binary" Nullable="false" sap:unicode="false" sap:label="Binary String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="EmpStatus" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Status"/>
+                </Key>
+                <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="STATUS" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <Association Name="EmployeesToResumes" sap:content-version="1">
+                <End Type="ZB68FE_EMP_SRV.Employee" Multiplicity="1" Role="FromRole_EmployeesToResumes"/>
+                <End Type="ZB68FE_EMP_SRV.Resume" Multiplicity="*" Role="ToRole_EmployeesToResumes"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_EmployeesToResumes">
+                        <PropertyRef Name="Empid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_EmployeesToResumes">
+                        <PropertyRef Name="Empid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="EmployeesToProjects" sap:content-version="1">
+                <End Type="ZB68FE_EMP_SRV.Employee" Multiplicity="1" Role="FromRole_EmployeesToProjects"/>
+                <End Type="ZB68FE_EMP_SRV.Project" Multiplicity="*" Role="ToRole_EmployeesToProjects"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_EmployeesToProjects">
+                        <PropertyRef Name="Empid"/>
+                    </Principal>
+                    <Dependent Role="ToRole_EmployeesToProjects">
+                        <PropertyRef Name="Empid"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZB68FE_EMP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="EmployeeSet" EntityType="ZB68FE_EMP_SRV.Employee" sap:searchable="true" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ProjectSet" EntityType="ZB68FE_EMP_SRV.Project" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="PhotoSet" EntityType="ZB68FE_EMP_SRV.Photo" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="ResumeSet" EntityType="ZB68FE_EMP_SRV.Resume" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EmpStatusSet" EntityType="ZB68FE_EMP_SRV.EmpStatus" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <AssociationSet Name="EmployeesToResumesSet" Association="ZB68FE_EMP_SRV.EmployeesToResumes" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="EmployeeSet" Role="FromRole_EmployeesToResumes"/>
+                    <End EntitySet="ResumeSet" Role="ToRole_EmployeesToResumes"/>
+                </AssociationSet>
+                <AssociationSet Name="EmployeesToProjectsSet" Association="ZB68FE_EMP_SRV.EmployeesToProjects" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="EmployeeSet" Role="FromRole_EmployeesToProjects"/>
+                    <End EntitySet="ProjectSet" Role="ToRole_EmployeesToProjects"/>
+                </AssociationSet>
+                <FunctionImport Name="UpdateEmpStatus" ReturnType="ZB68FE_EMP_SRV.Employee" EntitySet="EmployeeSet" m:HttpMethod="POST" sap:action-for="ZB68FE_EMP_SRV.Employee">
+                    <Parameter Name="Empid" Type="Edm.String" Mode="In"/>
+                    <Parameter Name="Status" Type="Edm.String" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="MakePerminant" ReturnType="ZB68FE_EMP_SRV.Employee" EntitySet="EmployeeSet" m:HttpMethod="POST" sap:action-for="ZB68FE_EMP_SRV.Employee">
+                    <Parameter Name="Empid" Type="Edm.String" Mode="In" MaxLength="6"/>
+                </FunctionImport>
+                <FunctionImport Name="ContinueProbation" ReturnType="ZB68FE_EMP_SRV.Employee" EntitySet="EmployeeSet" m:HttpMethod="POST" sap:action-for="ZB68FE_EMP_SRV.Employee">
+                    <Parameter Name="Empid" Type="Edm.String" Mode="In" MaxLength="6"/>
+                </FunctionImport>
+            </EntityContainer>
+            <atom:link rel="self" href="http://49.206.196.37:8034/sap/opu/odata/sap/ZB68FE_EMP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://49.206.196.37:8034/sap/opu/odata/sap/ZB68FE_EMP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
